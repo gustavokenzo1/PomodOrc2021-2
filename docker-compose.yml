@@ -24,7 +24,6 @@ services:
     
     
     front: 
-        build: front
         environment:
             CHOKIDAR_USEPOLLING: "true"
         volumes: 
