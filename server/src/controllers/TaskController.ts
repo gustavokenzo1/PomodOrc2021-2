@@ -1,16 +1,16 @@
-const Task = require('../models/Task')
-const User = require('../models/User')
+import Task from '../models/Task';
+import User from '../models/User'
 
 module.exports = {
-    async index(req, res) {
+    async index(req: any, res: any) {
         const { list } = req.query;
 
         const tasks = await Task.find({ lists: list });
-
+        
         return res.json(tasks)
     },
 
-    async store(req, res) {
+    async store(req: any, res: any) {
         const { list } =  req.body;
         const { user_id } = req.headers;
 
