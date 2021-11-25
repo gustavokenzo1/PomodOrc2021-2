@@ -6,29 +6,25 @@ function Homepage() {
 
     const [time, setTime] = useState(0)
 
+    /* function handleTime() {
+
+    } */
+
     return (
-        <>
+        <div className='main'>
             
             <div className="menu">
-
-                <div className="clock">
                     {time}
-                </div>
 
-                <div className="task">
-
-                </div>
-
-                <div className="buttons">
-
-                </div>
-                
+                    {/* <button onClick={handleTime}>
+                        Botão
+                    </button>    */}   
             </div>
 
             <div id="wave">
                 <Wave style={{ zIndex: 10 }} options={{ speed: 0.35 }} fill="#20c4fa" />
             </div>
-        </>
+        </div>
     );
 }
 
