@@ -1,13 +1,14 @@
+* {
+    height: 150px;
+    color: #333;
+}
+
 body {
     height: 100vh;
     overflow: hidden;
     position: relative;
     background: #20c4fa;
   }
-
-* {
-    height: 150px;
-}
 
 .main {
     position: relative;
@@ -23,8 +24,27 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 15px;
+ 
 }
 
+.buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.play-button {
+  margin-right: 20px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.reload-button {
+  margin-left: 20px;
+  background: transparent;
+  margin-top: -5px;
+  cursor: pointer;
+}
 
 #wave {
   top: 0px;
@@ -52,5 +72,3 @@ body {
     padding-top: 100vh;
   }
 }
-
-
