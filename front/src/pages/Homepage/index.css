@@ -1,8 +1,8 @@
 body {
-    background: rgba(32,196,250,1);
     height: 100vh;
     overflow: hidden;
     position: relative;
+    background: #20c4fa;
   }
 
 * {
@@ -14,14 +14,17 @@ body {
 }
 
 .menu {
-    width: 50vw;
-    height: 50vh;
-    position: absolute;
-    top: 25vh;
-    left: 25vw;
-    display: flex;
-    flex-direction: column;
+  width: 50vw;
+  height: 50vh;
+  position: absolute;
+  top: 25vh;
+  left: 25vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
 
 #wave {
   top: 0px;
@@ -32,7 +35,7 @@ body {
   margin: 0px;
   padding-top: 100vh;
   animation-name: move;
-  animation-duration: 10s;
+  animation-duration: 20s;
   animation-iteration-count: infinite;
   animation-delay: 0s;
   

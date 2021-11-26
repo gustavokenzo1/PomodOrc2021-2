@@ -53,5 +53,4 @@ export default class SessionController {
             res.status(400).json({ message: "Erro ao criar usuário" })
         }
     } 
-
 }
