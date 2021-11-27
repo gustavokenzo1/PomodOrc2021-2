@@ -11,10 +11,9 @@ function Homepage() {
     const [isActive, setIsActive] = useState(false)
     const [isSecondActive, setIsSecondActive] = useState(false)
     const [isFirstWave, setIsFirstWave] = useState(true)
-    
 
     function toggle() {
-        setIsFirstWave(!isFirstWave)
+        setIsFirstWave(false)
         setIsActive(!isActive)
     }
 
@@ -32,7 +31,7 @@ function Homepage() {
             interval = setInterval(() => {
                 setSeconds(seconds => seconds + 1)
             }, 10)
-            if(seconds===60){
+            if (seconds===60){
                 setMinutes(minutes => minutes +1)
                 setSeconds(0)
             }
@@ -60,7 +59,7 @@ function Homepage() {
                     setIsActive(true)
                 }
                 
-        }else if (!isActive && minutes !== 0 && counter % 4 === 0){
+        } else if (!isActive && minutes !== 0 && counter % 4 === 0){
             clearInterval(interval)
             setMinutes(15)
 
@@ -96,7 +95,7 @@ function Homepage() {
                 <div className="buttons" style={{'backgroundColor': 'transparent'}}>
                     <div className="play-button">
                         { 
-                        isActive || isSecondActive ?  
+                        (isActive && !isSecondActive) || (isSecondActive && !isActive) ?  
                         <FaIcons.FaPause onClick={toggle} style={{'backgroundColor': 'transparent', 'height': '18px' }}/> :
                         <FaIcons.FaPlay onClick={toggle} style={{'backgroundColor': 'transparent', 'height': '18px'}}/>
                         }
@@ -111,7 +110,8 @@ function Homepage() {
                 isFirstWave ? 'wave-default' : 
                 isActive === true && isSecondActive === false && !isFirstWave ? 'wave-up' : 
                 isActive === false && isSecondActive === true && !isFirstWave ? 'wave-down' : 'foda-se'
-            }>
+            }
+            >
                 <Wave
                  style={{ zIndex: 10 }} 
                  options={{ speed: 0.35 }} 
