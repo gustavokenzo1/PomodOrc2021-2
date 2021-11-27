@@ -10,9 +10,11 @@ function Homepage() {
     const[seconds,setSeconds] = useState(0)
     const [isActive, setIsActive] = useState(false)
     const [isSecondActive, setIsSecondActive] = useState(false)
+    const [isFirstWave, setIsFirstWave] = useState(true)
     
 
     function toggle() {
+        setIsFirstWave(!isFirstWave)
         setIsActive(!isActive)
     }
 
@@ -29,7 +31,7 @@ function Homepage() {
         if (isActive) {
             interval = setInterval(() => {
                 setSeconds(seconds => seconds + 1)
-            }, 1000)
+            }, 10)
             if(seconds===60){
                 setMinutes(minutes => minutes +1)
                 setSeconds(0)
@@ -51,7 +53,7 @@ function Homepage() {
                     if (minutes > 0) {
                         setSeconds(seconds => seconds - 1)
                     }
-                }, 1000)}
+                }, 10)}
 
                 if (seconds === 0 && minutes === 0 && !isSecondActive) {
                     setIsSecondActive(false)
@@ -67,7 +69,7 @@ function Homepage() {
                     if (minutes > 0) {
                         setSeconds(seconds => seconds - 1)
                     }
-                }, 1000)}
+                }, 10)}
 
                 if (seconds === 0 && minutes === 0 && !isSecondActive) {
                     setIsSecondActive(false)
@@ -78,53 +80,42 @@ function Homepage() {
         return () => clearInterval(interval)
 
     }, [isActive, isSecondActive, seconds, minutes])
-    
-    function waveDirection () {
-        if (isActive === false && isSecondActive === false) {
-            return 'wave-default'
-        }
-
-        else if (isActive === true && isSecondActive === false) {
-            return 'wave-up'
-        }
-
-        else {
-            return 'wave-down'
-        }
-    }
 
     return (
         <div className='main'>
             
-            <div className="menu" style={{ 'background-color': 'transparent'}}>
-                <h1 classname='timer' style={{'font-size':150, 'marginTop':'32px', 'background-color': 'transparent'}}>
+            <div className="menu" style={{ 'backgroundColor': 'transparent'}}>
+                <h1 className='timer' style={{'fontSize':'8vw', 'marginTop':'32px', 'backgroundColor': 'transparent'}}>
                     {`${minutes < 10 ? `0${minutes}` : minutes}`} : {`${seconds < 10 ? `0${seconds}` : seconds}`}
                 </h1>
 
-                <div classname='task' style={{'font-size':50, 'background-color': 'transparent', 'marginTop':'3vh', 'marginBottom':'3vh'}}>
+                <div className='task' style={{'fontSize':'4vw', 'backgroundColor': 'transparent', 'marginTop':'3vh', 'marginBottom':'3vh'}}>
                     Tarefa
                 </div>
 
-                <div className="buttons" style={{'background-color': 'transparent'}}>
+                <div className="buttons" style={{'backgroundColor': 'transparent'}}>
                     <div className="play-button">
                         { 
                         isActive || isSecondActive ?  
-                        <FaIcons.FaPause onClick={toggle} style={{'background-color': 'transparent', 'height': '18px' }}/> :
-                        <FaIcons.FaPlay onClick={toggle} style={{'background-color': 'transparent', 'height': '18px'}}/>
+                        <FaIcons.FaPause onClick={toggle} style={{'backgroundColor': 'transparent', 'height': '18px' }}/> :
+                        <FaIcons.FaPlay onClick={toggle} style={{'backgroundColor': 'transparent', 'height': '18px'}}/>
                         }
                     </div>
                     <div className="reload-button">
-                        <MdIcons.MdRefresh onClick={reset} size={28} style={{'background-color': 'transparent', 'height': '30px'}}/>
+                        <MdIcons.MdRefresh onClick={reset} size={28} style={{'backgroundColor': 'transparent', 'height': '30px'}}/>
                     </div>
                 </div>
             </div>
 
-            <div id="wave">
+            <div className={
+                isFirstWave ? 'wave-default' : 
+                isActive === true && isSecondActive === false && !isFirstWave ? 'wave-up' : 
+                isActive === false && isSecondActive === true && !isFirstWave ? 'wave-down' : 'foda-se'
+            }>
                 <Wave
                  style={{ zIndex: 10 }} 
                  options={{ speed: 0.35 }} 
                  fill="#20c4fa" 
-                 className={waveDirection}
                  />
             </div>
         </div>
