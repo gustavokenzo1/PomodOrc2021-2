@@ -78,7 +78,7 @@ body {
   margin: 0px;
   padding-top: 100vh;
   animation-name: move-down;
-  animation-duration: 15s;
+  animation-duration: 5s;
   animation-delay: 0s;
 }
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Wave from 'react-wavify';
 import * as FaIcons from 'react-icons/fa'
 import * as MdIcons from 'react-icons/md'
@@ -7,10 +7,11 @@ import './index.css'
 function Homepage() {
 
     const [minutes, setMinutes] = useState(0)
-    const[seconds,setSeconds] = useState(0)
+    const [seconds, setSeconds] = useState(0)
     const [isActive, setIsActive] = useState(false)
     const [isSecondActive, setIsSecondActive] = useState(false)
     const [isFirstWave, setIsFirstWave] = useState(true)
+    const counter = useRef(0)
 
     function toggle() {
         setIsFirstWave(false)
@@ -23,9 +24,9 @@ function Homepage() {
         setIsActive(false)
     }
 
+    
     useEffect(() => {
         let interval = null
-        let counter = 0
 
         if (isActive) {
             interval = setInterval(() => {
@@ -37,14 +38,26 @@ function Homepage() {
             }
 
             if (minutes === 25) {
-                setMinutes(5)
+                
                 setSeconds(0)
                 setIsSecondActive(true)
                 setIsActive(false)
-                counter++
+                counter.current++
+                console.log(counter)
+
+                if (counter % 4 === 0) {
+                    console.log('entrei')
+                    console.log(minutes)
+                    setMinutes(15)
+                    console.log(minutes)
+                }
+                else {
+                    console.log("Entrei no else")
+                    setMinutes(5)
+                }
             }
                 
-        } else if (!isActive && minutes !== 0 && counter % 4 !== 0 ) {
+        } else if (!isActive && minutes >= 0 && counter % 4 !== 0 ) {
             clearInterval(interval)
         
             if (isSecondActive) {
@@ -54,23 +67,32 @@ function Homepage() {
                     }
                 }, 10)}
 
-                if (seconds === 0 && minutes === 0 && !isSecondActive) {
+                if (seconds < 0) {
+                    setMinutes(minutes => minutes - 1)
+                }
+
+
+                if (seconds === 0 && minutes === 0 && isSecondActive) {
                     setIsSecondActive(false)
                     setIsActive(true)
                 }
                 
-        } else if (!isActive && minutes !== 0 && counter % 4 === 0){
+        } else if (!isActive && minutes >= 0 && counter % 4 === 0){
             clearInterval(interval)
-            setMinutes(15)
-
+            
             if (isSecondActive) {
                 interval = setInterval(() => {
-                    if (minutes > 0) {
+                    if (minutes >= 0 && seconds >= 0) {
                         setSeconds(seconds => seconds - 1)
                     }
                 }, 10)}
 
-                if (seconds === 0 && minutes === 0 && !isSecondActive) {
+                if (seconds === 0 && minutes !== 0) {
+                    setMinutes(minutes => minutes - 1)
+                    setSeconds(59)
+                }
+                
+                if (seconds === 0 && minutes === 0 && isSecondActive) {
                     setIsSecondActive(false)
                     setIsActive(true)
                 }
@@ -78,7 +100,7 @@ function Homepage() {
 
         return () => clearInterval(interval)
 
-    }, [isActive, isSecondActive, seconds, minutes])
+    }, [isActive, isSecondActive, seconds, minutes, counter])
 
     return (
         <div className='main'>
