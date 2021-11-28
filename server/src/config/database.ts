@@ -16,7 +16,7 @@ const databaseConnect = async () => {
                 }
                 );
     } catch (error) {
-        console.log('Não foi possível inicicializar corretamente a base de dados!');
+        console.log('Não foi possível inicializar corretamente a base de dados!');
         console.log(error);
     }
 }
