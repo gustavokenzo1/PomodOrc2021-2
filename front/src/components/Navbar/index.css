@@ -1,0 +1,17 @@
+.container {
+    background-color: red;
+    width: 100vw;
+    height: 10vh;
+}
+
+.Home {
+    margin-left: 3vw;
+    height: 50%;
+    
+}
+
+a {
+    height: 35px;
+    background: transparent;
+    margin-top: 5px;
+}

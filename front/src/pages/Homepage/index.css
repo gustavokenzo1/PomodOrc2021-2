@@ -82,6 +82,7 @@ body {
   animation-delay: 0s;
 }
 
+
 @keyframes move-up {
   0% {
     padding-top: 25vh;

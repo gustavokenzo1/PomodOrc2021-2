@@ -9,5 +9,6 @@
 }
 
 .navbar {
-  position: absolute;
+  position: relative;
+  z-index: 100;
 }

@@ -1,0 +1,94 @@
+.principal {
+    background-color: #20c4fa;
+}
+
+.register-menu {
+    width: 50vw;
+    height: 75vh;
+    position: absolute;
+    top: 15vh;
+    left: 25vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.title {
+    height: 40px;
+    margin-top: -30vh;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding-top: 5vh;
+    width: 20vw;
+}
+
+input {
+    display: flex;
+    height: 50px;
+    border: 1px solid;
+    border-radius: 5px;
+    padding-left: 10px;
+    margin-top: 10px;
+    width: 20vw;
+    outline: none;
+}
+
+.input-name {
+    height: 30px;
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 60px;
+    padding-bottom: 30px;
+}
+
+.email {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 60px;
+    padding-bottom: 30px;
+}
+.password {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 60px;
+    padding-bottom: 30px;
+}
+.confirm-password {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 60px;
+    padding-bottom: 30px;
+}
+
+button {
+    align-self: center;
+    justify-self: center;
+    width: 10vw;
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 0px;
+    background-color: #20c4fa;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+button:hover {
+    background-color: #008cbb;
+    transition: background-color 0.2s ease-in-out;
+    cursor: pointer;
+}

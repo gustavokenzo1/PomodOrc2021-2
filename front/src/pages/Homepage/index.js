@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import Wave from 'react-wavify';
 import * as FaIcons from 'react-icons/fa'
 import * as MdIcons from 'react-icons/md'
@@ -11,11 +11,13 @@ function Homepage() {
     const [isActive, setIsActive] = useState(false)
     const [isSecondActive, setIsSecondActive] = useState(false)
     const [isFirstWave, setIsFirstWave] = useState(true)
-    const counter = useRef(0)
+    let counter = 0
+    console.log(counter)
 
     function toggle() {
         setIsFirstWave(false)
         setIsActive(!isActive)
+        
     }
 
     function reset() {
@@ -28,7 +30,7 @@ function Homepage() {
     useEffect(() => {
         let interval = null
 
-        if (isActive) {
+        if (isActive && !isSecondActive) {
             interval = setInterval(() => {
                 setSeconds(seconds => seconds + 1)
             }, 10)
@@ -42,7 +44,7 @@ function Homepage() {
                 setSeconds(0)
                 setIsSecondActive(true)
                 setIsActive(false)
-                counter.current++
+                counter++
                 console.log(counter)
 
                 if (counter % 4 === 0) {
@@ -131,7 +133,7 @@ function Homepage() {
             <div className={
                 isFirstWave ? 'wave-default' : 
                 isActive === true && isSecondActive === false && !isFirstWave ? 'wave-up' : 
-                isActive === false && isSecondActive === true && !isFirstWave ? 'wave-down' : 'foda-se'
+                isActive === false && isSecondActive === true && !isFirstWave ? 'wave-down' : 'paused'
             }
             >
                 <Wave
