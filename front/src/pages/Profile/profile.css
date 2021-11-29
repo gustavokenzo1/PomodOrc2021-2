@@ -81,27 +81,6 @@ input {
     margin-bottom: 5px;
 
 }
-
-button {
-    align-self: center;
-    justify-self: center;
-    width: 10vw;
-    margin-top: 4vh;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border: 0px;
-    background-color: #20c4fa;
-    color: #fff;
-    border-radius: 10px;
-    min-width: 100px;
-}
-
-button:hover {
-    background-color: #008cbb;
-    transition: background-color 0.2s ease-in-out;
-    cursor: pointer;
-}
-
 .check {
     color: red;
     height: 20px;
@@ -118,4 +97,13 @@ button:hover {
     margin-top: 10px;
     font-size: 11px;
     color: #777;
+}
+
+.delete-button {
+    height: 40px;
+    background-color: rgb(247, 82, 82);
+}
+
+.delete-button:hover {
+    background-color: rgb(255, 0, 0);
 }

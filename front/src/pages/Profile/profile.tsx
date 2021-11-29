@@ -7,7 +7,6 @@ function Profile () {
 
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
     const [isLogged, setIsLogged] = useState(false)
     const [edit, setEdit] = useState(false)
     const [newUsername, setNewUsername] = useState('')
@@ -30,7 +29,6 @@ function Profile () {
                 if (localStorage.getItem('user') === response.data[i]._id) {
                     setUsername(response.data[i].username)
                     setEmail(response.data[i].email)
-                    setPassword(response.data[i].password)
                 }
             }
         }
@@ -45,19 +43,24 @@ function Profile () {
         if (!newUsername || !newPassword) {
             alert('Por favor, preencha todos os campos! Caso não deseje alterar, copie o cadastro anterior')
         } else {
+            const hashedPassword = bcrypt.hashSync(newPassword, '$2a$10$CwTycUXWue0Thq9StjUM0u')
 
-            setNewPassword(bcrypt.hashSync(newPassword, '$2a$10$CwTycUXWue0Thq9StjUM0u'))
-            console.log(newPassword)
-            console.log(newUsername)
             const id = localStorage.getItem('user')
             await api.patch(`/sessions/${id}`, {
-                password: newPassword,
+                password: hashedPassword,
                 username: newUsername
             })
             setEdit(!edit)
-            /* window.location.reload(); */
+            window.location.reload();
         }
 
+    }
+
+    async function handleDelete() {
+        const id = localStorage.getItem('user')
+        await api.delete(`/sessions/${id}`)
+        localStorage.removeItem('user')
+        window.location.reload();
     }
 
     return (
@@ -115,6 +118,7 @@ function Profile () {
                         <button className='edit-button' onClick={submitEdit}>Concluir</button> :
                         <button className='edit-button' onClick={handleEdit}>Editar</button>
                     }
+                <button className='delete-button' onClick={handleDelete}>Excluir perfil</button>
             </div>
         </div>
     )
