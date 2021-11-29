@@ -15,16 +15,22 @@
     border-radius: 15px;
 }
 
+
 .title {
     height: 40px;
-    margin-top: -30vh;
+    margin-top: -40vh;
+}
+
+strong {
+    cursor: pointer;
+    color: blue
 }
 
 form {
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    padding-top: 5vh;
+    padding-top: 4vh;
     width: 20vw;
 }
 
@@ -76,15 +82,14 @@ input {
 button {
     align-self: center;
     justify-self: center;
-    width: 10vw;
-    margin-top: 20px;
+    width: 100px;
+    margin-top: 1vh;
     padding-top: 10px;
     padding-bottom: 10px;
     border: 0px;
     background-color: #20c4fa;
     color: #fff;
     border-radius: 10px;
-    font-size: 18px;
 }
 
 button:hover {

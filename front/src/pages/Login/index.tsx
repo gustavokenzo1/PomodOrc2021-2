@@ -32,10 +32,10 @@ function Register () {
                 })
 
                 
-                const { _id } = response.data
+                /* const { _id } = response.data
 
                 localStorage.setItem('user', _id)
-                window.history.pushState(_id, 'PomodOrc', '/' )
+                window.history.pushState(_id, 'PomodOrc', '/' ) */
 
             } else {
                 alert('As senhas não são iguais!')
@@ -93,6 +93,12 @@ function Register () {
                         placeholder='Confirme sua senha'
                         />
                     </div>
+                    <h1 className='alreadyRegistered'>Já está cadastrado? Clique <strong 
+                    onClick={() => {
+                        history('/login')
+                    }}
+                    >aqui</strong> para entrar </h1>
+
                     <button className='register-button' type='submit'
                     onClick={() => {
                         history('/login')

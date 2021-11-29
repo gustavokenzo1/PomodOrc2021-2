@@ -1,25 +1,37 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './index.css'
 import * as FaIcons from 'react-icons/fa'
 import { BrowserRouter as Router, Link } from 'react-router-dom'
 
-
-
-
 function Navbar () {
+
     return(
         <Router>
             <div className='container'>
-                <div className = "Home" style={{'background':'transparent','display':'flex', 'flexDirection':'row'}}>
+                <div className = "Home" style={{'background':'transparent'}}>
                     <Link to='/'>
-                        <FaIcons.FaHome size={30} style={{'backgroundColor': 'transparent', 'height': '30px' }}/>      
+                        <FaIcons.FaHome size={35} style={{'backgroundColor': 'transparent', 'height': '35px'}}/>      
                     </Link>
                 </div>
-                <div className = "Tasks" style={{'fontSize':"20px", 'backgroundColor':'black', 'display':'flex', 'flexDirection':'row'}}>
-                    <Link to='/'>
-                           <h2>Tasks</h2> 
+
+                <div className = "Perfil" style={{'backgroundColor':'transparent', 'textDecoration':'none'}}>
+                    <Link to='/register' style={{'textDecoration':'none'}}>
+                           <h2>Perfil</h2> 
                     </Link>
                 </div>
+
+                <div className = "Tasks" style={{'backgroundColor':'transparent'}}>
+                    <Link to='/register' style={{'textDecoration':'none'}}>
+                           <h2>Tarefas</h2> 
+                    </Link>
+                </div>
+
+                <div className = "Lists" style={{'backgroundColor':'transparent', 'textDecoration':'none'}}>
+                    <Link to='/register' style={{'textDecoration':'none'}}>
+                           <h2>Listas</h2> 
+                    </Link>
+                </div>
+
             </div>
         </Router>
         
