@@ -1,8 +1,8 @@
-.principal {
+.principalLogin {
     background-color: #20c4fa;
 }
 
-.register-menu {
+.register-menu-login {
     width: 50vw;
     height: 75vh;
     position: absolute;
@@ -16,9 +16,9 @@
 }
 
 
-.title {
+.titleLogin {
     height: 40px;
-    margin-top: -30vh;
+    margin-top: -10vh;
 }
 
 strong {
@@ -93,7 +93,7 @@ button:hover {
 
 .check {
     color: red;
-    height: 40px;
-    padding-top: 40px;
+    height: 20px;
+    padding-top: 3vh;
     width: 20vw;
 }

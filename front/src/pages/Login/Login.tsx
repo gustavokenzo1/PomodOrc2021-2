@@ -32,7 +32,8 @@ function Login () {
                         localStorage.setItem('user', _id)
                         check++
                         history('/')
-                    }else {
+                        window.location.reload();
+                    } else {
                         check--
                     }
                 } else {
@@ -47,9 +48,9 @@ function Login () {
     }
 
     return (
-        <div className="principal">
-            <div className='register-menu'>
-                <h1 className='title'>Login</h1>
+        <div className="principalLogin">
+            <div className='register-menu-login'>
+                <h1 className='titleLogin'>Login</h1>
                 <form onSubmit={handleForm}>
                     <div className='email'>
                         <div className='input-name'>E-mail: </div>
@@ -73,16 +74,20 @@ function Login () {
                         placeholder='Sua senha'
                         />
                     </div>
-                    <h1 className='alreadyRegistered'>Ainda não possui cadastro? Clique <strong 
-                    onClick={() => {
-                        history('/register')
-                    }}
-                    >aqui</strong> para entrar </h1>
+                    
 
                     <button className='register-button' type='submit'>Entrar</button>
                 </form>
                 {
-                    successful ? <div className='check'/> : <div className='check'>E-mail ou senha estão incorretos</div>
+                    successful ?
+                    <div className='check'> 
+                        <h1 className='alreadyRegistered'>Ainda não possui cadastro? Clique <strong 
+                        onClick={() => {
+                            history('/register')
+                        }}
+                        >aqui</strong> para entrar </h1>
+                    </div> : 
+                    <div className='check'>E-mail ou senha estão incorretos</div>
                 }
             </div>
         </div>

@@ -31,6 +31,8 @@ function Register () {
                     password: hashedPassword
                 })
 
+                history('/login')
+
             } else {
                 alert('As senhas não são iguais!')
             }

@@ -1,8 +1,8 @@
-.principal {
+.principalLogin {
     background-color: #20c4fa;
 }
 
-.register-menu {
+.profile-menu {
     width: 50vw;
     height: 75vh;
     position: absolute;
@@ -16,9 +16,9 @@
 }
 
 
-.title {
+.titleLogin {
     height: 40px;
-    margin-top: -35vh;
+    margin-top: -10vh;
 }
 
 strong {
@@ -47,14 +47,7 @@ input {
 
 .input-name {
     height: 30px;
-}
-
-.user {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 60px;
-    padding-bottom: 30px;
+    color: #333;
 }
 
 .email {
@@ -63,15 +56,18 @@ input {
     justify-content: center;
     height: 60px;
     padding-bottom: 30px;
+    color: blue
 }
-.password {
+
+.username {
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 60px;
     padding-bottom: 30px;
+    color: blue
 }
-.confirm-password {
+.password {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -83,11 +79,10 @@ input {
     font-size: 12px;
     color: #666;
     margin-bottom: 5px;
-    height: 10px;
 
 }
 
-.register-button {
+button {
     align-self: center;
     justify-self: center;
     width: 10vw;
@@ -105,4 +100,22 @@ button:hover {
     background-color: #008cbb;
     transition: background-color 0.2s ease-in-out;
     cursor: pointer;
+}
+
+.check {
+    color: red;
+    height: 20px;
+    padding-top: 3vh;
+    width: 20vw;
+}
+
+.edit-button {
+    height: 40px;
+    margin-top: 100px;
+}
+
+.observation {
+    margin-top: 10px;
+    font-size: 11px;
+    color: #777;
 }
