@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import api from '../../services/api'
 import { useNavigate } from 'react-router-dom'
-import './index.css'
+import './Register.css'
 
 import bcrypt from 'bcryptjs'
 
@@ -25,17 +25,11 @@ function Register () {
 
                 const hashedPassword = bcrypt.hashSync(password, '$2a$10$CwTycUXWue0Thq9StjUM0u')
 
-                const response = await api.post('/sessions', {
+                await api.post('/sessions', {
                     username: username,
                     email: email,
                     password: hashedPassword
                 })
-
-                
-                const { _id } = response.data
-
-                localStorage.setItem('user', _id)
-                window.history.pushState(_id, 'PomodOrc', '/' )
 
             } else {
                 alert('As senhas não são iguais!')
@@ -93,10 +87,14 @@ function Register () {
                         placeholder='Confirme sua senha'
                         />
                     </div>
-                    <button className='register-button' type='submit'
+                    <h1 className='alreadyRegistered'>Já está cadastrado? Clique <strong 
                     onClick={() => {
                         history('/login')
-                    }}>Registrar</button>
+                    }}
+                    >aqui</strong> para entrar </h1>
+
+                    <button className='register-button' type='submit'
+                    >Registrar</button>
                 </form>
             </div>
         </div>

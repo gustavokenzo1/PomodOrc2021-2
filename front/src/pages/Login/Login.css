@@ -15,16 +15,10 @@
     border-radius: 15px;
 }
 
+
 .title {
     height: 40px;
     margin-top: -30vh;
-}
-
-.alreadyRegistered {
-    font-size: 12px;
-    color: #666;
-    margin-bottom: 5px;
-
 }
 
 strong {
@@ -36,7 +30,7 @@ form {
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    padding-top: 5vh;
+    padding-top: 4vh;
     width: 20vw;
 }
 
@@ -55,14 +49,6 @@ input {
     height: 30px;
 }
 
-.user {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 60px;
-    padding-bottom: 30px;
-}
-
 .email {
     display: flex;
     flex-direction: column;
@@ -77,30 +63,37 @@ input {
     height: 60px;
     padding-bottom: 30px;
 }
-.confirm-password {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 60px;
-    padding-bottom: 30px;
+
+.alreadyRegistered {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+
 }
 
 button {
     align-self: center;
     justify-self: center;
     width: 10vw;
-    margin-top: 20px;
+    margin-top: 4vh;
     padding-top: 10px;
     padding-bottom: 10px;
     border: 0px;
     background-color: #20c4fa;
     color: #fff;
     border-radius: 10px;
-    font-size: 18px;
+    min-width: 100px;
 }
 
 button:hover {
     background-color: #008cbb;
     transition: background-color 0.2s ease-in-out;
     cursor: pointer;
+}
+
+.check {
+    color: red;
+    height: 40px;
+    padding-top: 40px;
+    width: 20vw;
 }
