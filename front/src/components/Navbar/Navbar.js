@@ -73,6 +73,9 @@ function Navbar () {
                             <a href='/login' className='Perfil'>
                                 <h2>Login</h2> 
                             </a>
+                            <a href='/register' className='Perfil'>
+                                <h2>Registrar</h2> 
+                            </a>
                         </div>
                     </>
                     }

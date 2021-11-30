@@ -50,7 +50,7 @@ function Login () {
     return (
         <div className="principalLogin">
             <div className='register-menu-login'>
-                <h1 className='titleLogin'>Login</h1>
+                <h1 className='titleLogin' style={{'marginTop':'-10vh'}}>Login</h1>
                 <form onSubmit={handleForm}>
                     <div className='email'>
                         <div className='input-name'>E-mail: </div>

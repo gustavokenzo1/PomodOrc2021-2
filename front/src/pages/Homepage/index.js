@@ -14,11 +14,18 @@ function Homepage() {
     const [pause, setPause] = useState(false)
     const [wave, setWave] = useState(false)
     const [counter, setCounter] = useState(0)
+    const [task, setTask] = useState('')
 
     function toggle() {
         setIsActive(!isActive)
         setCounter(counter + 1)
-        setWave(!wave)
+
+        if (counter % 2 === 0) {
+            setWave(true)
+
+        } else {
+            setWave(false)
+        }
     }
 
     function reset() {
@@ -80,6 +87,17 @@ function Homepage() {
 
     }, [isActive, isSecondActive, seconds, minutes])
 
+    async function handleTask() {
+        const user_id = localStorage.getItem('user')
+        const response = await api.get('/tasklists', { user: user_id })
+        let i = 0
+        for (i; i < response.data.length; i++) {
+            setTask(response.data[0].list[0])
+        }
+        console.log(response)
+    }
+
+
 
     return (
         <div className='main'>
@@ -89,8 +107,8 @@ function Homepage() {
                     {`${minutes < 10 ? `0${minutes}` : minutes}`} : {`${seconds < 10 ? `0${seconds}` : seconds}`}
                 </h1>
 
-                <div className='task' style={{'fontSize':'4vw', 'backgroundColor': 'transparent', 'marginTop':'3vh', 'marginBottom':'3vh'}}>
-                    {}
+                <div className='task' onClick={handleTask} style={{'fontSize':'4vw', 'backgroundColor': 'transparent', 'marginTop':'3vh', 'marginBottom':'3vh'}}>
+                    Tarefa: {task}
                 </div>
 
                 <div className="buttons" style={{'backgroundColor': 'transparent'}}>
