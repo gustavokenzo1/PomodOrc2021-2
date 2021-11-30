@@ -18,7 +18,7 @@
 
 .titleLogin {
     height: 40px;
-    margin-top: -10vh;
+    margin-top: 0;
 }
 
 strong {
@@ -106,4 +106,8 @@ input {
 
 .delete-button:hover {
     background-color: rgb(255, 0, 0);
+}
+
+.return-button {
+    height: 40px;
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Wave from 'react-wavify';
 import * as FaIcons from 'react-icons/fa'
 import * as MdIcons from 'react-icons/md'
+import api from '../../services/api';
 import './index.css'
 
 function Homepage() {
@@ -10,22 +11,29 @@ function Homepage() {
     const [seconds, setSeconds] = useState(0)
     const [isActive, setIsActive] = useState(false)
     const [isSecondActive, setIsSecondActive] = useState(false)
-    const [isFirstWave, setIsFirstWave] = useState(true)
-    let counter = 0
-    console.log(counter)
+    const [pause, setPause] = useState(false)
+    const [wave, setWave] = useState(false)
+    const [counter, setCounter] = useState(0)
 
     function toggle() {
-        setIsFirstWave(false)
         setIsActive(!isActive)
-        
+        setCounter(counter + 1)
+        setWave(!wave)
     }
 
     function reset() {
         setMinutes(0)
         setSeconds(0)
         setIsActive(false)
+        setIsSecondActive(false)
+        setCounter(0)
+        setPause(false)
+        setWave(!wave)
     }
 
+    function handlePause() {
+        setPause(!pause)
+    }
     
     useEffect(() => {
         let interval = null
@@ -33,76 +41,45 @@ function Homepage() {
         if (isActive && !isSecondActive) {
             interval = setInterval(() => {
                 setSeconds(seconds => seconds + 1)
-            }, 10)
+            }, 13) /* Aumentar em 30% o tempo de cada loop */
             if (seconds===60){
                 setMinutes(minutes => minutes +1)
                 setSeconds(0)
             }
 
-            if (minutes === 25) {
-                
-                setSeconds(0)
+            if (minutes === 25) {                
                 setIsSecondActive(true)
                 setIsActive(false)
-                counter++
-                console.log(counter)
-
-                if (counter % 4 === 0) {
-                    console.log('entrei')
-                    console.log(minutes)
-                    setMinutes(15)
-                    console.log(minutes)
-                }
-                else {
-                    console.log("Entrei no else")
-                    setMinutes(5)
-                }
+                
+                setMinutes(5)
             }
-                
-        } else if (!isActive && minutes >= 0 && counter % 4 !== 0 ) {
-            clearInterval(interval)
-        
-            if (isSecondActive) {
-                interval = setInterval(() => {
-                    if (minutes > 0) {
-                        setSeconds(seconds => seconds - 1)
-                    }
-                }, 10)}
-
-                if (seconds < 0) {
-                    setMinutes(minutes => minutes - 1)
-                }
-
-
-                if (seconds === 0 && minutes === 0 && isSecondActive) {
-                    setIsSecondActive(false)
-                    setIsActive(true)
-                }
-                
-        } else if (!isActive && minutes >= 0 && counter % 4 === 0){
-            clearInterval(interval)
             
+        } else if (!isActive && minutes >= 0 && isSecondActive) {
+            clearInterval(interval)
             if (isSecondActive) {
                 interval = setInterval(() => {
-                    if (minutes >= 0 && seconds >= 0) {
+                    if (minutes >= 0 && seconds >=0) {
                         setSeconds(seconds => seconds - 1)
                     }
-                }, 10)}
+                }, 13)} /* Aumentar em 30% o tempo de cada loop */
 
                 if (seconds === 0 && minutes !== 0) {
                     setMinutes(minutes => minutes - 1)
                     setSeconds(59)
                 }
-                
+
+
                 if (seconds === 0 && minutes === 0 && isSecondActive) {
                     setIsSecondActive(false)
                     setIsActive(true)
                 }
-            }
+                
+        }
 
         return () => clearInterval(interval)
 
-    }, [isActive, isSecondActive, seconds, minutes, counter])
+    }, [isActive, isSecondActive, seconds, minutes])
+
 
     return (
         <div className='main'>
@@ -113,13 +90,13 @@ function Homepage() {
                 </h1>
 
                 <div className='task' style={{'fontSize':'4vw', 'backgroundColor': 'transparent', 'marginTop':'3vh', 'marginBottom':'3vh'}}>
-                    Tarefa
+                    {}
                 </div>
 
                 <div className="buttons" style={{'backgroundColor': 'transparent'}}>
-                    <div className="play-button">
+                    <div className="play-button" onClick={handlePause}>
                         { 
-                        (isActive && !isSecondActive) || (isSecondActive && !isActive) ?  
+                        pause ?  
                         <FaIcons.FaPause onClick={toggle} style={{'backgroundColor': 'transparent', 'height': '18px' }}/> :
                         <FaIcons.FaPlay onClick={toggle} style={{'backgroundColor': 'transparent', 'height': '18px'}}/>
                         }
@@ -130,15 +107,15 @@ function Homepage() {
                 </div>
             </div>
 
-            <div className={
-                isFirstWave ? 'wave-default' : 
-                isActive === true && isSecondActive === false && !isFirstWave ? 'wave-up' : 
-                isActive === false && isSecondActive === true && !isFirstWave ? 'wave-down' : 'paused'
-            }
-            >
+            <div 
+            className={counter !== 0 ? 'waveMovement' : 'wave-default'}
+            style={wave ?
+                 {'animationPlayState':'running'} : 
+                 {'animationPlayState':'paused'}
+                }>
                 <Wave
                  style={{ zIndex: 10 }} 
-                 options={{ speed: 0.35 }} 
+                 options={{ speed: 0.3 }} 
                  fill="#20c4fa" 
                  />
             </div>

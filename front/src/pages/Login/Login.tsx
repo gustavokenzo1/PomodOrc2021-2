@@ -85,7 +85,7 @@ function Login () {
                         onClick={() => {
                             history('/register')
                         }}
-                        >aqui</strong> para entrar </h1>
+                        >aqui</strong> para registrar </h1>
                     </div> : 
                     <div className='check'>E-mail ou senha estão incorretos</div>
                 }

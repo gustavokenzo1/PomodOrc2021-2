@@ -69,7 +69,7 @@ function Profile () {
                 <h1 className='titleLogin'>Perfil</h1>
                 {
                     edit ?
-                    <form>
+                    <form className='profileForm'>
 
                     <div className='username'>
                         <div className='input-name'>Usuário: </div>
@@ -118,7 +118,16 @@ function Profile () {
                         <button className='edit-button' onClick={submitEdit}>Concluir</button> :
                         <button className='edit-button' onClick={handleEdit}>Editar</button>
                     }
-                <button className='delete-button' onClick={handleDelete}>Excluir perfil</button>
+                    {
+                        edit ?
+                        <button className='return-button' onClick={handleEdit}>Voltar</button> :
+                        <></>
+                    }
+                    {
+                        edit ? 
+                        <button className='delete-button' onClick={handleDelete}>Excluir perfil</button> :
+                        <></>
+                    }
             </div>
         </div>
     )
