@@ -17,6 +17,16 @@
   border-radius: 15px;
 }
 
+.list-title {
+  margin-bottom: 5vh;
+  position: relative;
+  height: 40px;
+}
+
+.listsWrapper {
+  margin-top: -25vh;
+}
+
 .aviso {
   color: #333;
 }

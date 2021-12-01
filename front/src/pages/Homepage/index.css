@@ -59,58 +59,6 @@ body {
   
 }
 
-/* 
-.wave-up {
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  background: rgb(255, 255, 255);
-  height: 150px;
-  margin: 0px;
-  padding-top: 100vh;
-  animation-name: move-up;
-  animation-duration: 25s;
-  animation-delay: 0s;
-}
-
-.wave-down {
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  background: rgb(255, 255, 255);
-  height: 150px;
-  margin: 0px;
-  padding-top: 100vh;
-  animation-name: move-down;
-  animation-duration: 5s;
-  animation-delay: 0s;
-} */
-
-
-/* @keyframes move-up {
-  0% {
-    padding-top: 25vh;
-  }
-
-  5% {
-    padding-top: 100vh;
-  }
-
-  100% {
-    padding-top: 0;
-  }
-}
-
-@keyframes move-down {
-  0% {
-    padding-top: 0vh;
-  }
-  
-  100% {
-    padding-top: 100vh;
-  }
-} */
-
 .waveMovement {
   top: 0px;
   left: 0px;

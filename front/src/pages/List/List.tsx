@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from 'react' 
 import api from '../../services/api';
+import ListForm from '../../components/Form/ListForm';
 import './List.css';
     
-export default function Form() {
+export default function List() {
 
-  const [edit, setEdit] = useState(false)
-  const [text, setText] = useState('')
   const [isLogged, setIsLogged] = useState(false)
-  const [list, setList] = useState([])
+  const [todos, setTodos] = useState([])
 
-  function handleButton() {
-    setEdit(!edit)    
-  }
+
+  const addTodo = todo => {
+    if(!todo.text || /^\s*$/.test(todo.text)) {
+        return
+    }
+
+    const newTodos = [todo, ...todos] as any
+
+    setTodos(newTodos)
+
+}
 
   useEffect(() => {
     if (localStorage.getItem('user')) {
@@ -48,28 +55,12 @@ export default function Form() {
   return (
     <div className="principal">
         <div className='listsMenu'>
-            <h1>Listas</h1>
-            {
-              edit ? 
-              <div className='submitListInputs'>
-                  <input 
-                    className="field" 
-                    placeholder="Digite um nome para a lista"
-                    onChange={e => setText(e.currentTarget.value)}/>
-              </div>
-              :
-              <div>
-                <li>
-                  blablabla
-                </li>
-              </div>
-            }
-
-            <button 
-             className="button-save"
-             onClick={handleButton}>{
-               edit ? 'Salvar' : 'Criar Lista'
-             }</button>
+          <div className='listsWrapper'>
+            <h1 className='list-title'>Listas de Tarefas</h1>
+            <div className='main-form'>
+              <ListForm />
+            </div>
+            </div>
         </div>
     </div>
 
