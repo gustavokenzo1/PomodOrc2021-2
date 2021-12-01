@@ -7,6 +7,8 @@ import Login from './pages/Login/Login';
 import Navbar from './components/Navbar/Navbar';
 import Error from './pages/Error/Error';
 import Profile from './pages/Profile/profile';
+import Task from './pages/Task/Task';
+import List from './pages/List/List';
 
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
           <Route  path='/register' element={<Register />} />
           <Route  path='/login' element={<Login />} />
           <Route  path='/profile' element={<Profile />} />
+          <Route  path='/tasks' element={<Task />} />
+          <Route  path='/lists' element={<List />} />
           <Route path='*' element={<Error /> } />
         </Routes>
       </Router>

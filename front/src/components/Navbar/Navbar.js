@@ -48,13 +48,13 @@ function Navbar () {
                         </div>
                             
                         <div className = "Tasks" style={{'backgroundColor':'transparent'}}>
-                            <a href='/register' style={{'textDecoration':'none'}}>
+                            <a href='/tasks' style={{'textDecoration':'none'}}>
                                    <h2>Tarefas</h2> 
                             </a>
                         </div>
                             
                         <div className = "Lists" style={{'backgroundColor':'transparent', 'textDecoration':'none'}}>
-                        <a href='/register' style={{'textDecoration':'none'}}>
+                        <a href='/lists' style={{'textDecoration':'none'}}>
                                <h2>Listas</h2> 
                         </a>
                 </div>

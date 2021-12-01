@@ -89,15 +89,13 @@ function Homepage() {
 
     async function handleTask() {
         const user_id = localStorage.getItem('user')
-        const response = await api.get('/tasklists', { user: user_id })
+        const response = await api.get('/tasklists', { user_id })
         let i = 0
         for (i; i < response.data.length; i++) {
             setTask(response.data[0].list[0])
         }
-        console.log(response)
+        console.log(response.data.length)
     }
-
-
 
     return (
         <div className='main'>

@@ -64,6 +64,7 @@ export default class TasklistController {
         const { user_id } = req.headers;
         const taskslists = await Tasklist.find({ user: user_id });
         return res.json(taskslists)
+        
     }
 
     getOneTasklist = async (req: Request, res: Response) => {
@@ -77,5 +78,11 @@ export default class TasklistController {
             console.log(error)
             res.status(400).json({ message: "Erro ao listar lista" })
         }
+    }
+
+    getAllTaskslist = async (req: Request, res: Response) => {
+
+        const taskslists = await Tasklist.find();
+        return res.json(taskslists)
     }
 }

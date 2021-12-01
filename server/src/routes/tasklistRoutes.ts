@@ -24,4 +24,8 @@ tasklistRoutes.get('/', (req, res) => {
     tasklistController.getUserTaskslist(req,res)
 })
 
+tasklistRoutes.get('/', (req, res) => {
+    tasklistController.getAllTaskslist(req,res)
+})
+
 export default tasklistRoutes

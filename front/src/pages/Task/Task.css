@@ -1,0 +1,79 @@
+.principal {
+    background-color: #20c4fa;
+    display: flex;
+    justify-content: center
+    
+  }
+
+.tasksMenu {
+    width: 50vw;
+    height: 75vh;
+    position: absolute;
+    top: 15vh;
+    left: 25vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.aviso {
+    color: #333;
+}
+
+.redirect {
+    text-decoration: none;
+}
+
+.field {
+    display: flex;
+    height: 40px;
+    border: 1px solid;
+    border-radius: 5px;
+    padding-left: 10px;
+    margin-top: 0px;
+    width: 20vw;
+    outline: none;
+}
+
+.button-save {
+  font-size: 16px;
+  padding: 5px;
+  height: 40px;
+  min-width: 100px;
+  width: 10vw;
+}
+    
+.custom-select {
+    position: relative;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.submitInputs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+select {
+    height: 40px;
+    width: 20vw;
+    border-radius: 5px;
+    margin: auto;
+}
+
+@media (max-width: 800px) {
+    .submitInputs {
+        flex-direction: column;
+    }
+
+    .custom-select {
+        margin-top: 15px;
+        margin-left: 0px;
+    }
+}
