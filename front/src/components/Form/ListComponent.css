@@ -53,6 +53,7 @@ h5 {
     height: 35px;
     width: 30vw;
     position: relative;
+    align-self: center;
 }
 
 .icons svg {
@@ -65,6 +66,16 @@ h5 {
 
 ::-webkit-scrollbar {
     width: 0;
+}
+
+.tasklistName {
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    font-size: 17px;
+    height: 20px;
+    margin-top: 5px;
+    width: 90%;
 }
 
 .editInput {
@@ -96,10 +107,16 @@ h5 {
     .listCard {
         font-size: 15px;
     }
+    .tasklistName {
+        font-size: 15px;
+    }
 }
 
 @media screen and (max-width: 585px) {
     .listCard {
+        font-size: 10px;
+    }
+    .tasklistName {
         font-size: 10px;
     }
 }

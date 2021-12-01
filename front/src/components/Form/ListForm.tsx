@@ -88,7 +88,7 @@ function ListForm() {
                     <div className='all-lists'>
                         {lists.map(list => (
                             <div key={list._id} className='listCard'>
-                                <h5>{list.name}</h5>
+                                <div className='tasklistName'>{list.name}</div>
                                 <div className='icons'>
                                     <RiIcons.RiEdit2Line 
                                         onClick={() => {handleEdit(list._id)}} />
@@ -103,7 +103,7 @@ function ListForm() {
                             <div key={list._id} className='listCard'>
                                 {
                                     list._id !== listId ?
-                                    <h5>{list.name}</h5> 
+                                    <div className='tasklistName'>{list.name}</div> 
                                     :
                                     <>
                                     <input
