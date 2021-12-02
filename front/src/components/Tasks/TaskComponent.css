@@ -1,16 +1,27 @@
-.listas {
+
+/* 
+Camel Case: camelCase
+*/
+
+.tasks {
     position: relative;
     background-color: blue;
 }
 
-.list-list {
+.taskList {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 40vh;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+    width: 50vw;
+    position: absolute;
+    border-radius: 15px;
+    top: 15vh;
+    left: 25vw;
 }
 
-.listCard {
+.taskCard {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -25,7 +36,7 @@
     background-color: #002f5e;
 }
 
-.tasklistName:hover {
+.taskName:hover {
     color: #20c4fa;
     transition: 0.2s ease-in-out;
 }
@@ -49,7 +60,7 @@ h5 {
     transition: 0.2s ease-in-out;
 }
 
-.list-form {
+.taskForm {
     width: 100%;
     display: flex;
 }
@@ -73,7 +84,7 @@ h5 {
     width: 0;
 }
 
-.tasklistName {
+.taskName {
     cursor: pointer;
     background-color: transparent;
     color: white;
@@ -96,21 +107,22 @@ h5 {
     transition: 0.2s ease-in-out;
 }
 
-.iconsList {
+.icons {
     height: 25px;
     margin-right: 5px;
     display: flex;
     justify-content: space-between;
-    width: 50px;
+    width: 75px;
     background-color: #002f5e;
 }
 
-.all-lists {
+.allTasks {
     position: relative;
     overflow-y: scroll;
     height: 20vh;
     border: 2px #333 solid;
     border-radius: 10px;
+    width: 30vw;
 }
 
 .redirect {
@@ -119,19 +131,19 @@ h5 {
 }
 
 @media screen and (max-width: 733px) {
-    .listCard {
+    .taskCard {
         font-size: 15px;
     }
-    .tasklistName {
+    .taskName {
         font-size: 15px;
     }
 }
 
 @media screen and (max-width: 585px) {
-    .listCard {
+    .taskCard {
         font-size: 10px;
     }
-    .tasklistName {
+    .taskName {
         font-size: 10px;
     }
 }

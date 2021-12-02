@@ -2,23 +2,12 @@ import React, { useState, useEffect } from 'react'
 import api from '../../services/api';
 import ListForm from '../../components/Form/ListForm';
 import './List.css';
+import TaskForm from '../../components/Tasks/TaskForm';
     
 export default function List() {
 
   const [isLogged, setIsLogged] = useState(false)
-  const [todos, setTodos] = useState([])
-
-
-  const addTodo = todo => {
-    if(!todo.text || /^\s*$/.test(todo.text)) {
-        return
-    }
-
-    const newTodos = [todo, ...todos] as any
-
-    setTodos(newTodos)
-
-}
+  const [isInTasks, setIsInTasks] = useState(false)
 
   useEffect(() => {
     if (localStorage.getItem('user')) {
@@ -27,8 +16,6 @@ export default function List() {
     } else {
         setIsLogged(false)
     }
-
-    const user_id = localStorage.getItem('user')
 
     async function handleTasklist() {
         const response = await api.get('/tasklists')
@@ -50,15 +37,23 @@ export default function List() {
         }
         */
     }
-}, [isLogged])
+
+    const isTask = localStorage.getItem('list')
+
+    if (isTask) {
+      setIsInTasks(true)
+    }
+
+}, [isLogged, isInTasks])
 
   return (
     <div className="principal">
         <div className='listsMenu'>
           <div className='listsWrapper'>
-            <h1 className='list-title'>Listas de Tarefas</h1>
             <div className='main-form'>
-              <ListForm />
+              {
+                isInTasks ? <TaskForm /> : <ListForm />
+              }
             </div>
             </div>
         </div>

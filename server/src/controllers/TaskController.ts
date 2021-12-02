@@ -6,48 +6,59 @@ import Tasklist from '../models/Tasklist';
 export default class TaskController {
 
     createTask = async (req: Request, res: Response) => {
-        const { task_ } =  req.body;
-        const { tasklist_id } = req.headers;
-        const { user_id } = req.headers;
+        /* const { list, name } =  req.body; */
+        const { id } = req.params;
 
-        const tasklist = await Tasklist.findById(tasklist_id);
-        const user = await User.findById(user_id);
+        const tasklist = await Tasklist.findById(id);
 
         try {
+
             if (!tasklist) {
                 return res.status(400).json({ error: 'Lista não existe!' })
             }
 
-            let task = await Tasklist.create({
-                tasklist: tasklist_id,
-                user: user_id,
-                task_
-            })
+            let task = await Task.create(req.body)
 
-            res.status(200).json(task)
-
+            await tasklist.updateOne({$push:{list: task}});
+            res.status(200).json({ message: "Tarefa adicionada com sucesso" })
+            
         } catch (error) {
             console.log(error)
             res.status(400).json({ message: "Erro ao criar lista" })
         }
     }
+    
+    getAllTasks = async (req: Request, res: Response) => {
 
-    deleteTask = async (req: Request, res: Response) => {
+        const { id } = req.params
+        
+        try {
+            const data = await Tasklist.findById(id)
+            res.status(200).json(data)
+            
+        } catch (error) {
+            console.log(error)
+            res.status(400).json({ message: "Erro ao listar tarefa" })
+        }
+    }
+
+    getOneTask = async (req: Request, res: Response) => {
         const { id } = req.params
 
         try {
-            await Task.findByIdAndDelete(id)
-            res.status(200).json({ message: "Tarefa deletada com sucesso" })
+            let task = await Task.findById(id)
+            res.status(200).json(task)
+
         } catch (error) {
             console.log(error)
-            res.status(400).json({ message: "Erro ao deletar tarefa" })
+            res.status(400).json({ message: "Erro ao listar tarefa" })
         }
     }
 
     updateTask = async (req: Request, res: Response) => {
         const { id } = req.params
         try {
-            const tasklist = await Tasklist.findById(id)
+            const tasklist = await Task.findById(id)
 
             if (!tasklist) {
                 res.status(400).json({ message: "A tarefa não existe" })
@@ -62,27 +73,20 @@ export default class TaskController {
         }
     }
 
-    getTasks = async (req: Request, res: Response) => {
+    deleteTask = async (req: Request, res: Response) => {
+
+        const { id } = req.headers
+        const { tasklist_id } = req.headers
+        const tasklist = await Tasklist.findById(tasklist_id);
 
         try {
-            let tasks = await Task.find()
-            res.status(200).json(tasks)
+            await Task.findByIdAndDelete(id)
+            await tasklist.updateOne({$pull:{list: id}});
+            
+            res.status(200).json("Tarefa deleteda com sucesso")
         } catch (error) {
             console.log(error)
-            res.status(400).json({ message: "Erro ao listar tarefas" })
-        }
-    }
-
-    getOneTask = async (req: Request, res: Response) => {
-        const { id } = req.params
-
-        try {
-            let task = await Task.findById(id)
-            res.status(200).json(task)
-
-        } catch (error) {
-            console.log(error)
-            res.status(400).json({ message: "Erro ao listar tarefa" })
+            res.status(400).json({ message: "Erro ao deletar tarefa" })
         }
     }
 }
