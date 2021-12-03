@@ -14,7 +14,9 @@ function Homepage() {
   const [pause, setPause] = useState(false);
   const [wave, setWave] = useState(false);
   const [counter, setCounter] = useState(0);
-  const [task, setTask] = useState("");
+  const [task, setTask] = useState("")
+  const taskExists = localStorage.getItem("task");
+  const isLogged = localStorage.getItem("user");
 
   function toggle() {
     setIsActive(!isActive);
@@ -42,8 +44,8 @@ function Homepage() {
   }
 
   function redirectAndDelete() {
-      localStorage.removeItem('task')
-      window.location.reload();
+    localStorage.removeItem("task");
+    window.location.reload();
   }
 
   useEffect(() => {
@@ -85,16 +87,26 @@ function Homepage() {
       }
     }
 
-    async function handleTask() {
-      const selectedTask = localStorage.getItem("task");
-      const response = await api.get(`/tasks/one/${selectedTask}`);
-      setTask(response.data.name);
+    if (!isLogged) {
+      localStorage.removeItem("task");
+      localStorage.removeItem("list");
     }
 
-    handleTask();
-
     return () => clearInterval(interval);
-  }, [isActive, isSecondActive, seconds, minutes]);
+  }, [isActive, isSecondActive, isLogged, seconds, minutes]);
+
+  useEffect(() => {
+    async function handleTask() {
+      const selectedTask = localStorage.getItem("task");
+      if (selectedTask) {
+        const response = await api.get(`/tasks/one/${selectedTask}`);
+        setTask(response.data.name);
+      } else {
+        setTask("");
+      }
+    }
+    handleTask();
+  }, []);
 
   return (
     <div className="main">
@@ -121,25 +133,37 @@ function Homepage() {
           }}
         >
           <div className="selectedTask">
-            {
-                task ?
-                <div className='euJaNaoSeiMais'>
-                    {task}{" "}
-                    <RiIcons.RiDeleteBin6Line
-                      onClick={redirectAndDelete}
-                      size={23}
-                      style={{
-                        backgroundColor: "transparent",
-                        height: "30px",
-                        marginLeft: "20px"
-                      }}
-                    />
-                </div>
-                :
-                <a href='/lists'>
-                    <button className='selectTaskButton' >Selecionar tarefa</button>
-                </a>
-            }
+            {task && isLogged && taskExists ? (
+              <div className="euJaNaoSeiMais">
+                {task}{" "}
+                <RiIcons.RiDeleteBin6Line
+                  onClick={redirectAndDelete}
+                  size={23}
+                  style={{
+                    backgroundColor: "transparent",
+                    height: "30px",
+                    marginLeft: "20px",
+                    cursor: "pointer",
+                  }}
+                />
+              </div>
+            ) : (
+              <>
+                {isLogged ? (
+                  <a href="/lists">
+                    <button className="selectTaskButton">
+                      Selecionar tarefa
+                    </button>
+                  </a>
+                ) : (
+                  <a href="/login">
+                    <button className="selectTaskButton">
+                      Selecionar tarefa
+                    </button>
+                  </a>
+                )}
+              </>
+            )}
           </div>
         </div>
 

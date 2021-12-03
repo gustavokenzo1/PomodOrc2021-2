@@ -105,7 +105,7 @@ function TaskForm() {
 
     getTasks();
     convertTaskId();
-  }, [counter]);
+  }, [counter, list_id, task, tasks]);
 
   return (
     <>
