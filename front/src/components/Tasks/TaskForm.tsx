@@ -12,8 +12,7 @@ function TaskForm() {
   const [editText, setEditText] = useState("");
   const [task, setTask] = useState("");
   const [taskListName, setTaskListName] = useState("");
-  const [taskName, setTaskName] = useState([] as any);
-  const [preId, setPreId] = useState([] as any);
+  const [tasks, setTasks] = useState([] as any);
   const [counter, setCounter] = useState(0);
 
   async function handleSubmit(event) {
@@ -40,21 +39,30 @@ function TaskForm() {
     setEditText(e.target.value);
   };
 
-  async function handleDelete(i: any) {
+  async function handleDelete(_id: any) {
+    const tasklist_id = localStorage.getItem("list");
+    localStorage.removeItem('task')
+
+    if (tasklist_id) {
+      await api.delete("/tasks", {
+        headers: {
+          id: _id,
+          tasklist_id,
+        },
+      });
+    }
+
     window.location.reload();
   }
 
   async function handleEdit(task: any) {
     setEdit(!edit);
     setTaskId(task);
-
-
-    preId.map((item) => console.log(item));
   }
 
   async function sendEdit() {
     if (editText) {
-      await api.patch(`/tasklists/${taskId}`, {
+      await api.patch(`/tasks/${taskId}`, {
         name: editText,
       });
       window.location.reload();
@@ -63,7 +71,16 @@ function TaskForm() {
     setEdit(!edit);
   }
 
+  async function handleCheck(_id, boolean: boolean) {
+    await api.patch(`/tasks/${_id}`, { check: boolean });
+    window.location.reload();
+  }
+
   const list_id = localStorage.getItem("list");
+
+  function handleRedirect(_id) {
+    localStorage.setItem('task', _id)
+  }
 
   useEffect(() => {
     async function getTasks() {
@@ -76,11 +93,9 @@ function TaskForm() {
       let i = 0;
       for (i; i < task.length; i++) {
         const response = await api.get(`/tasks/one/${task[i]}`);
-        taskName[i] = response.data.name;
-        preId[i] = response.data._id;
+        tasks[i] = response.data;
       }
-      setTaskName(taskName);
-      setPreId(preId);
+      setTasks(tasks);
     }
 
     if (!task) {
@@ -95,26 +110,40 @@ function TaskForm() {
   return (
     <>
       <div className="taskList">
-        <h1> {taskListName} </h1>
+        <h1 className='listName' > {taskListName} </h1>
+        <h5 className='aviso' >Clique em uma tarefa para selecioná-la no timer</h5>
         {edit ? (
           <div className="allTasks">
-            {preId.map((task) => (
-              <div key={task} className="taskCard">
-                <div className="taskName">{task}</div>
+            {tasks.map((task) => (
+              <a href='/' key={task._id} className="taskCard" onClick={() => handleRedirect(task._id)}>
+                <div className="taskName">{task.name}</div>
                 <div className="icons">
-                  <RiIcons.RiEdit2Line onClick={() => handleEdit(task)} />
-                  <RiIcons.RiDeleteBin6Line />
-                  <ImIcons.ImCheckboxUnchecked size={16} />
+                  <RiIcons.RiEdit2Line onClick={() => handleEdit(task._id)} />
+                  <RiIcons.RiDeleteBin6Line
+                    onClick={() => handleDelete(task._id)}
+                  />
+                  {task.check ? (
+                    <ImIcons.ImCheckboxChecked
+                    className='checkBox'
+                      style={{'fill':'rgb(0, 218, 0)'}}
+                      onClick={() => handleCheck(task._id, false)}
+                    />
+                  ) : (
+                    <ImIcons.ImCheckboxUnchecked
+                    className='checkBox'
+                      onClick={() => handleCheck(task._id, true)}
+                    />
+                  )}
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         ) : (
           <div className="allTasks">
-            {preId.map((task) => (
-              <div key={task} className="taskCard">
-                {task !== taskId ? (
-                  <div className="tasklistNames">{task.name}</div>
+            {tasks.map((task) => (
+              <div key={task._id} className="taskCard">
+                {task._id !== taskId ? (
+                  <div className="taskName">{task.name}</div>
                 ) : (
                   <>
                     <input

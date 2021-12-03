@@ -27,7 +27,7 @@ Camel Case: camelCase
     flex-direction: row;
     justify-content: space-between;
     height: 30px;
-    width: 100% - 4px;
+    width: 100%;
     border: 1px solid;
     border-radius: 5px;
     margin-bottom: 10px;
@@ -72,6 +72,10 @@ h5 {
     align-self: center;
 }
 
+.listName {
+    height: 50px;
+}
+
 .icons svg {
     height: 30px;
     cursor: pointer;
@@ -107,13 +111,19 @@ h5 {
     transition: 0.2s ease-in-out;
 }
 
+.aviso {
+    background-color: transparent;
+    height: 30px;
+}
+
 .icons {
     height: 25px;
-    margin-right: 5px;
     display: flex;
     justify-content: space-between;
     width: 75px;
     background-color: #002f5e;
+    position: absolute;
+    right: 20px;
 }
 
 .allTasks {
@@ -130,12 +140,27 @@ h5 {
     height: 30px;
 }
 
+.checkBox {
+    font-size: 16px;
+}
+
 @media screen and (max-width: 733px) {
     .taskCard {
         font-size: 15px;
     }
     .taskName {
         font-size: 15px;
+    }
+    .listName {
+        font-size: 20px;
+    }
+
+    .checkBox {
+        font-size: 13px;
+    }
+
+    .aviso {
+        font-size: 10px;
     }
 }
 
@@ -145,5 +170,9 @@ h5 {
     }
     .taskName {
         font-size: 10px;
+    }
+
+    .checkBox {
+        font-size: 9px;
     }
 }

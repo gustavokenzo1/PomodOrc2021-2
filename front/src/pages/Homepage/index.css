@@ -33,6 +33,31 @@ body {
   flex-direction: row;
 }
 
+.selectedTask {
+  background-color: transparent;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.euJaNaoSeiMais {
+  background-color: transparent;
+  font-size: calc(12px + 2vw);
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selectTaskButton {
+  background-color: #002f5e;
+  height: 50px;
+  width: 200px;
+  font-size: large;
+}
+
 .play-button {
   margin-right: 20px;
   background: transparent;
