@@ -96,6 +96,7 @@ h5 {
     height: 20px;
     margin-top: 5px;
     width: 90%;
+    text-decoration: none;
 }
 
 .editInput {
@@ -114,6 +115,11 @@ h5 {
 .aviso {
     background-color: transparent;
     height: 30px;
+}
+
+.backButton {
+    height: 40px;
+    margin-top: -50px;
 }
 
 .icons {

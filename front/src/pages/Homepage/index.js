@@ -17,18 +17,18 @@ function Homepage() {
   const [task, setTask] = useState("")
   const taskExists = localStorage.getItem("task");
   const isLogged = localStorage.getItem("user");
-
+  
   function toggle() {
     setIsActive(!isActive);
     setCounter(counter + 1);
-
+    
     if (counter % 2 === 0) {
       setWave(true);
     } else {
       setWave(false);
     }
   }
-
+  
   function reset() {
     setMinutes(0);
     setSeconds(0);
@@ -38,19 +38,19 @@ function Homepage() {
     setPause(false);
     setWave(!wave);
   }
-
+  
   function handlePause() {
     setPause(!pause);
   }
-
+  
   function redirectAndDelete() {
     localStorage.removeItem("task");
     window.location.reload();
   }
-
+  
   useEffect(() => {
     let interval = null;
-
+    
     if (isActive && !isSecondActive) {
       interval = setInterval(() => {
         setSeconds((seconds) => seconds + 1);
@@ -59,11 +59,11 @@ function Homepage() {
         setMinutes((minutes) => minutes + 1);
         setSeconds(0);
       }
-
+      
       if (minutes === 25) {
         setIsSecondActive(true);
         setIsActive(false);
-
+        
         setMinutes(5);
       }
     } else if (!isActive && minutes >= 0 && isSecondActive) {
@@ -143,7 +143,7 @@ function Homepage() {
                     backgroundColor: "transparent",
                     height: "30px",
                     marginLeft: "20px",
-                    cursor: "pointer",
+                    cursor: "pointer"
                   }}
                 />
               </div>
@@ -199,7 +199,7 @@ function Homepage() {
             : { animationPlayState: "paused" }
         }
       >
-        <Wave style={{ zIndex: 10 }} options={{ speed: 0.3 }} fill="#20c4fa" />
+        <Wave style={{ zIndex: 10, marginTop: 10 }} options={{ speed: 0.3 }} fill="#20c4fa" />
       </div>
     </div>
   );

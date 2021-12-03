@@ -15,7 +15,7 @@
     position: absolute;
     background-color: #002f5e;
     height: 100%;
-    width: 80%;
+    width: 60%;
 }
 
 .containerRight {
@@ -33,6 +33,7 @@
     margin-top: 20px;
     margin-right: 20px;
     cursor: pointer;
+    height: 40px;
 }
 
 

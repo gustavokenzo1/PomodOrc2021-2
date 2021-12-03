@@ -1,6 +1,8 @@
 * {
     height: 150px;
     color: #333;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -54,8 +56,8 @@ body {
 .selectTaskButton {
   background-color: #002f5e;
   height: 50px;
-  width: 200px;
-  font-size: large;
+  width: 15vw;
+  font-size: calc(12px + 0.7vw);
 }
 
 .play-button {
@@ -63,6 +65,7 @@ body {
   background: transparent;
   cursor: pointer;
   height: 20px;
+  filter: drop-shadow(2px 2px 2px black);
 }
 
 .reload-button {
@@ -71,6 +74,7 @@ body {
   margin-top: -5px;
   cursor: pointer;
   height: 20px;
+  filter: drop-shadow(2px 2px 2px black);
 }
 
 .wave-default {
@@ -92,7 +96,7 @@ body {
   height: 150px;
   margin: 0px;
   padding-top: 100vh;
-  animation-duration: 30s;
+  animation-duration: 1800s;
   animation-name: wave-movement;
   animation-delay: 0s;
   animation-iteration-count: infinite;
@@ -105,7 +109,7 @@ body {
   }
 
   83.3% {
-    padding-top: 7vh;
+    padding-top: 5vh;
   }
 
   100% {

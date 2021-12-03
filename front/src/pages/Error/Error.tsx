@@ -20,7 +20,7 @@ function Error() {
                     opts={opts}
                     onReady={onReady}
                 />
-                <h1>A página que você está procurando não existe!</h1>
+                <h1 className='errou'>A página que você está procurando não existe!</h1>
             </div>
         </div>
     )

@@ -41,7 +41,7 @@ function TaskForm() {
 
   async function handleDelete(_id: any) {
     const tasklist_id = localStorage.getItem("list");
-    localStorage.removeItem('task')
+    localStorage.removeItem("task");
 
     if (tasklist_id) {
       await api.delete("/tasks", {
@@ -79,7 +79,7 @@ function TaskForm() {
   const list_id = localStorage.getItem("list");
 
   function handleRedirect(_id) {
-    localStorage.setItem('task', _id)
+    localStorage.setItem("task", _id);
   }
 
   useEffect(() => {
@@ -110,13 +110,21 @@ function TaskForm() {
   return (
     <>
       <div className="taskList">
-        <h1 className='listName' > {taskListName} </h1>
-        <h5 className='aviso' >Clique em uma tarefa para selecioná-la no timer</h5>
+        <h1 className="listName"> {taskListName} </h1>
+        <h5 className="aviso">
+          Clique em uma tarefa para selecioná-la no timer
+        </h5>
         {edit ? (
           <div className="allTasks">
             {tasks.map((task) => (
-              <a href='/' key={task._id} className="taskCard" onClick={() => handleRedirect(task._id)}>
-                <div className="taskName">{task.name}</div>
+              <div key={task._id} className="taskCard">
+                <a
+                  className="taskName"
+                  href="/"
+                  onClick={() => handleRedirect(task._id)}
+                >
+                  {task.name}
+                </a>
                 <div className="icons">
                   <RiIcons.RiEdit2Line onClick={() => handleEdit(task._id)} />
                   <RiIcons.RiDeleteBin6Line
@@ -124,18 +132,18 @@ function TaskForm() {
                   />
                   {task.check ? (
                     <ImIcons.ImCheckboxChecked
-                    className='checkBox'
-                      style={{'fill':'rgb(0, 218, 0)'}}
+                      className="checkBox"
+                      style={{ fill: "rgb(0, 218, 0)" }}
                       onClick={() => handleCheck(task._id, false)}
                     />
                   ) : (
                     <ImIcons.ImCheckboxUnchecked
-                    className='checkBox'
+                      className="checkBox"
                       onClick={() => handleCheck(task._id, true)}
                     />
                   )}
                 </div>
-              </a>
+              </div>
             ))}
           </div>
         ) : (
@@ -175,6 +183,9 @@ function TaskForm() {
           />
           <button className="todo-button">Adicionar Tarefa</button>
         </form>
+        <a href="/lists" className="backButton">
+          <button className="todo-button">Voltar</button>
+        </a>
       </div>
     </>
   );

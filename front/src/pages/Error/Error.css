@@ -1,16 +1,22 @@
 .rickRoll {
     position: absolute;
     z-index: 100000;
-    margin-top: 20vh;
-    margin-left: 30vw;
+    height: 50vh;
+    width: 50vw;
+    background-color: #20c4fa;
+    font-weight: light;
 }
 
 .rickContainer {
     background-color: #20c4fa;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .rickRoll h1 {
-    background-color: #20c4fa;
     color: white;
-    font-weight: light;
+    background-color: #20c4fa;
 }

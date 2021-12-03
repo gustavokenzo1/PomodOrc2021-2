@@ -25,13 +25,19 @@ function Register () {
 
                 const hashedPassword = bcrypt.hashSync(password, '$2a$10$CwTycUXWue0Thq9StjUM0u')
 
-                await api.post('/sessions', {
-                    username: username,
-                    email: email,
-                    password: hashedPassword
-                })
+                try {
+                    await api.post('/sessions', {
+                        username: username,
+                        email: email,
+                        password: hashedPassword
+                    })
+                    history('/login')
+                    console.log('Obrigado,', username, 'por se cadastrar!')
 
-                history('/login')
+                } catch (error) {
+                    alert('Usuário ou e-mail já foram cadastrados!')
+                }
+
 
             } else {
                 alert('As senhas não são iguais!')
