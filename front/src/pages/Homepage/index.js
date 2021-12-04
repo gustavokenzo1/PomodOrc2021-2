@@ -4,6 +4,7 @@ import * as FaIcons from "react-icons/fa";
 import * as MdIcons from "react-icons/md";
 import * as RiIcons from "react-icons/ri";
 import api from "../../services/api";
+import som from '../../assets/som.mp3'
 import "./index.css";
 
 function Homepage() {
@@ -106,7 +107,16 @@ function Homepage() {
       }
     }
     handleTask();
-  }, []);
+
+    const audio = new Audio(som)
+
+    if (isActive === false && isSecondActive === true) {
+      audio.play()
+    }
+    else {
+      audio.play()
+    }
+  }, [isActive, isSecondActive]);
 
   return (
     <div className="main">
@@ -143,7 +153,8 @@ function Homepage() {
                     backgroundColor: "transparent",
                     height: "30px",
                     marginLeft: "20px",
-                    cursor: "pointer"
+                    cursor: "pointer",
+                    filter: 'drop-shadow(3px 2px 2px black)'
                   }}
                 />
               </div>
