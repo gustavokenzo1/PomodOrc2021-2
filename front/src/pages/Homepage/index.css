@@ -98,7 +98,7 @@ body {
   padding-top: 100vh;
   animation-duration: 1800s;
   animation-name: wave-movement;
-  animation-delay: 0s;
+  animation-delay: 0ms;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
@@ -108,7 +108,7 @@ body {
     padding-top: 95vh;
   }
 
-  83.3% {
+  83.33333333333% {
     padding-top: 5vh;
   }
 

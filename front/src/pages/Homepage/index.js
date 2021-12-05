@@ -55,7 +55,7 @@ function Homepage() {
     if (isActive && !isSecondActive) {
       interval = setInterval(() => {
         setSeconds((seconds) => seconds + 1);
-      }, 13); /* Aumentar em 30% o tempo de cada loop */
+      }, 1000); /* Aumentar em 30% o tempo de cada loop */
       if (seconds === 60) {
         setMinutes((minutes) => minutes + 1);
         setSeconds(0);
@@ -74,7 +74,7 @@ function Homepage() {
           if (minutes >= 0 && seconds >= 0) {
             setSeconds((seconds) => seconds - 1);
           }
-        }, 13);
+        }, 1000);
       } /* Aumentar em 30% o tempo de cada loop */
 
       if (seconds === 0 && minutes !== 0) {
@@ -94,7 +94,7 @@ function Homepage() {
     }
 
     return () => clearInterval(interval);
-  }, [isActive, isSecondActive, isLogged, seconds, minutes]);
+  }, [isActive, isSecondActive, isLogged, seconds]);
 
   useEffect(() => {
     async function handleTask() {
