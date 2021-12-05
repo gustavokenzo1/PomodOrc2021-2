@@ -1,0 +1,137 @@
+.listas {
+    position: relative;
+    background-color: blue;
+}
+
+.list-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 40vh;
+}
+
+.listCard {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 30px;
+    width: 100% - 4px;
+    border: 1px solid;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    padding-left: 5px;
+    background-color: #002f5e;
+}
+
+.tasklistName:hover {
+    color: #20c4fa;
+    transition: 0.2s ease-in-out;
+}
+
+h5 {
+    height: 20px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    background-color: #002f5e;
+    color: white;
+    font-weight: lighter;
+}
+
+.todo-button {
+    height: 40px;
+    position: relative;
+}
+
+.todo-button:hover {
+    background-color: #002f5e;
+    transition: 0.2s ease-in-out;
+}
+
+.list-form {
+    width: 100%;
+    display: flex;
+}
+
+.todo-input {
+    height: 35px;
+    width: 30vw;
+    position: relative;
+    align-self: center;
+}
+
+.icons svg {
+    height: 30px;
+    cursor: pointer;
+    position: relative;
+    background-color: #002f5e;
+    fill: white;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+.tasklistName {
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    font-size: 17px;
+    height: 20px;
+    margin-top: 5px;
+    width: 90%;
+}
+
+.editInput {
+    height: 30px;
+    width: 80%;
+    margin-top: -1px;
+    border-radius: 5px;
+    margin-left: -6px;
+}
+
+.checkIcon:hover {
+    fill: rgb(0, 218, 0);
+    transition: 0.2s ease-in-out;
+}
+
+.iconsList {
+    height: 25px;
+    margin-right: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: 50px;
+    background-color: #002f5e;
+}
+
+.all-lists {
+    position: relative;
+    overflow-y: scroll;
+    height: 20vh;
+    border: 2px #333 solid;
+    border-radius: 10px;
+}
+
+.redirect {
+    width: 90%;
+    height: 30px;
+}
+
+@media screen and (max-width: 733px) {
+    .listCard {
+        font-size: 15px;
+    }
+    .tasklistName {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 585px) {
+    .listCard {
+        font-size: 10px;
+    }
+    .tasklistName {
+        font-size: 10px;
+    }
+}

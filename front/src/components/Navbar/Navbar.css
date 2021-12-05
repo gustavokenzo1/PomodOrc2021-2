@@ -1,0 +1,105 @@
+.container {
+    background-color: #002f5e; 
+    width: 100%;
+    height: 8vh;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0px 2px 4px rgb(0, 0, 0);
+    z-index: 1000;
+}
+
+.containerLeft {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    background-color: #002f5e;
+    height: 100%;
+    width: 60%;
+}
+
+.containerRight {
+    width: 20%;
+    height: 100%;
+    background-color: #002f5e;
+    position: absolute;
+    color: white;
+    margin-left: 80%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.Perfil {
+    margin-top: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+    height: 40px;
+}
+
+
+.navbar{
+    width: 100vw;
+    height: 8vh;
+}
+.Home {
+    margin-left: 2vw;
+    position: relative;
+    top: 25% ; 
+    height: 26px;
+}
+.Home:hover{
+    fill: #20c4fa;
+    transition: fill 0.2s ease-in-out;
+}
+
+a {
+    background: transparent;
+}
+
+.Tasks{
+    background-color: transparent;
+    padding-left: 2vw;
+    position: relative;
+    top: 30%;
+    color: #fffefb;
+}
+
+.Tasks h2{
+    background-color: transparent;
+    font: 26px;
+}
+
+.Lists{
+    background-color: transparent;
+    position: relative;
+    top: 30%;
+    padding-left: 2vw;
+}
+
+.Lists h2{
+    background-color: transparent;
+    font:26px;
+}
+
+h2 {
+    height: 26px;
+    color: white;
+    font-weight: normal;
+    display: block;
+    background-color: transparent;
+    font-size:calc(12px + 0.8vw);
+}
+
+h2:hover {
+    color: #20c4fa;
+    transition: color 0.2s ease-in-out;
+}
+
+.Home svg {
+    fill: white;
+}
+
+.Home svg:hover {
+    fill: #20c4fa;
+    transition: fill 0.2s ease-in-out;
+}

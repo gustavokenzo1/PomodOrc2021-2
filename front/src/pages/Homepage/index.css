@@ -1,0 +1,128 @@
+* {
+    height: 150px;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background: #20c4fa;
+  }
+
+.main {
+    position: relative;
+}
+
+.menu {
+  width: 50vw;
+  height: 50vh;
+  position: absolute;
+  top: 25vh;
+  left: 25vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+ 
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.selectedTask {
+  background-color: transparent;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.euJaNaoSeiMais {
+  background-color: transparent;
+  font-size: calc(12px + 2vw);
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selectTaskButton {
+  background-color: #002f5e;
+  height: 50px;
+  width: 15vw;
+  font-size: calc(12px + 0.7vw);
+}
+
+.play-button {
+  margin-right: 20px;
+  background: transparent;
+  cursor: pointer;
+  height: 20px;
+  filter: drop-shadow(2px 2px 2px black);
+}
+
+.reload-button {
+  margin-left: 20px;
+  background: transparent;
+  margin-top: -5px;
+  cursor: pointer;
+  height: 20px;
+  filter: drop-shadow(2px 2px 2px black);
+}
+
+.wave-default {
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  background: rgb(255, 255, 255);
+  height: 150px;
+  margin: 0px;
+  padding-top: 25vh;
+  
+}
+
+.waveMovement {
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  background: rgb(255, 255, 255);
+  height: 150px;
+  margin: 0px;
+  padding-top: 100vh;
+  animation-duration: 1800s;
+  animation-name: wave-movement;
+  animation-delay: 0ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes wave-movement {
+  0% {
+    padding-top: 95vh;
+  }
+
+  83.33333333333% {
+    padding-top: 5vh;
+  }
+
+  100% {
+    padding-top: 98vh;
+  }
+}
+
+@keyframes wave-down {
+  0% {
+    padding-top: 25vh
+  }
+
+  100% {
+    padding-top: 100vh;
+  }
+}

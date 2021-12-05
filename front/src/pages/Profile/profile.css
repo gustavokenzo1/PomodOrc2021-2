@@ -1,0 +1,113 @@
+.principalLogin {
+    background-color: #20c4fa;
+}
+
+.profile-menu {
+    width: 50vw;
+    height: 75vh;
+    position: absolute;
+    top: 15vh;
+    left: 25vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+
+.titleLogin {
+    height: 40px;
+    margin-top: 0;
+}
+
+strong {
+    cursor: pointer;
+    color: blue
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding-top: 4vh;
+    width: 20vw;
+}
+
+input {
+    display: flex;
+    height: 50px;
+    border: 1px solid;
+    border-radius: 5px;
+    padding-left: 10px;
+    margin-top: 10px;
+    width: 20vw;
+    outline: none;
+}
+
+.input-name {
+    height: 30px;
+    color: #333;
+}
+
+.email {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 60px;
+    padding-bottom: 30px;
+    color: blue
+}
+
+.username {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 60px;
+    padding-bottom: 30px;
+    color: blue
+}
+.password {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 60px;
+    padding-bottom: 30px;
+}
+
+.alreadyRegistered {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+
+}
+.check {
+    color: red;
+    height: 20px;
+    padding-top: 3vh;
+    width: 20vw;
+}
+
+.edit-button {
+    height: 40px;
+    margin-top: 100px;
+}
+
+.observation {
+    margin-top: 10px;
+    font-size: 11px;
+    color: #777;
+}
+
+.delete-button {
+    height: 40px;
+    background-color: rgb(247, 82, 82);
+}
+
+.delete-button:hover {
+    background-color: rgb(255, 0, 0);
+}
+
+.return-button {
+    height: 40px;
+}
